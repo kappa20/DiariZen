@@ -2,7 +2,6 @@ einops
 flit
 h5py
 joblib
-joblib
 jupyterlab
 tensorboard
 librosa
@@ -23,3 +22,4 @@ torchinfo
 tqdm
 accelerate==1.6.0
 thop
+setuptools

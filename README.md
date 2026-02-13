@@ -3,21 +3,32 @@ DiariZen is a speaker diarization toolkit driven by [AudioZen](https://github.co
 
 
 ## Installation
-```
+```bash
 # create virtual python environment
 conda create --name diarizen python=3.10
 conda activate diarizen
 
-# install diarizen 
+# install diarizen (Choose one: CUDA or CPU)
+# For CUDA 12.1:
 conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 pytorch-cuda=12.1 -c pytorch -c nvidia
+# For CPU only:
+# conda install pytorch==2.1.1 torchvision==0.16.1 torchaudio==2.1.1 cpuonly -c pytorch
+
 pip install -r requirements.txt && pip install -e .
 
 # install pyannote-audio
 cd pyannote-audio && pip install -e .[dev,testing]
 
 # install dscore
+cd ..
 git submodule init
 git submodule update
+```
+
+### Troubleshooting
+If you encounter `ImportError: ... libtorch_cpu.so: undefined symbol: iJIT_NotifyEvent` on Linux (CPU only), it is likely due to an MKL version mismatch. You can fix it by downgrading MKL:
+```bash
+conda install mkl=2023.1.0 mkl-service=2.4.0
 ```
 
 ## Usage
