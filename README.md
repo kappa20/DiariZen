@@ -31,6 +31,12 @@ If you encounter `ImportError: ... libtorch_cpu.so: undefined symbol: iJIT_Notif
 conda install mkl=2023.1.0 mkl-service=2.4.0
 ```
 
+If you encounter `ModuleNotFoundError: No module named 'pkg_resources'` when installing `pyannote-audio`, please ensure that `setuptools` is installed and updated in your environment:
+```bash
+pip install --upgrade setuptools
+```
+We have also updated `pyannote-audio/setup.cfg` to remove the deprecated `pyscaffold` build requirement which often causes this issue.
+
 ## Usage
 - For model training, see `recipes/diar_ssl/run_stage.sh`. 
 - For model pruning, see `recipes/diar_ssl_pruning/run_stage.sh`. 
